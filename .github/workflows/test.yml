@@ -1,9 +1,10 @@
 name: Laravel Testing
 
-push:
-    branches: [ "main" ]
+on:
+  push:
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   laravel-testing:
@@ -29,10 +30,10 @@ jobs:
 
       - name: Setup Laravel
         run: |
-          docker compose exec -T app cp .env.example .env
-          docker compose exec -T app php artisan config:clear
-          docker compose exec -T app php artisan key:generate
           docker compose exec -T app composer install
+          docker compose exec -T app cp .env.example .env
+          docker compose exec -T app php artisan key:generate
+          docker compose exec -T app php artisan config:clear
 
       - name: Migrate & Test
         run: |
