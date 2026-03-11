@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        // Post（記事）を10件作成する。
+        \App\Models\Post::factory(10)->create();
     }
 }
